@@ -17,15 +17,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV["DB_USER"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  #username: <%= ENV["DB_USER"] %>
+  #password: <%= ENV["DB_PASSWORD"] %>
+  #url: <%= ENV["DATABASE_URL"] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: intento_development
+  url: postgres://dbproyecto_cbvn_user:4qNIKgSFgqN5sg4waIMaBGnyVwXvVNE7@dpg-cojit6e3e1ms73bbcd1g-a.oregon-postgres.render.com/dbproyecto_cbvn
+  #url: <%= ENV["DATABASE_URL"] %>
+  #database: intento_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -59,7 +62,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: intento_test
+  url: postgres://dbproyecto_cbvn_user:4qNIKgSFgqN5sg4waIMaBGnyVwXvVNE7@dpg-cojit6e3e1ms73bbcd1g-a.oregon-postgres.render.com/dbproyecto_cbvn
+  #url: <%= ENV["DATABASE_URL"] %>
+  #database: intento_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,5 +88,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  url: postgres://dbproyecto_cbvn_user:4qNIKgSFgqN5sg4waIMaBGnyVwXvVNE7@dpg-cojit6e3e1ms73bbcd1g-a.oregon-postgres.render.com/dbproyecto_cbvn
+  #url: <%= ENV["DATABASE_URL"] %>
 
